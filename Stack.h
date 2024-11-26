@@ -9,7 +9,6 @@ class Stack
 	char mas[FULL + 1];
 public:
 	Stack();
-	Stack(const char* mas_P);
 	void Clear();
 	bool IsEmpty();
 	bool IsFull();
@@ -17,4 +16,6 @@ public:
 	void Push(char c);
 	void Print();
 	char Pop();
+	bool Correct();
+	void Print_Res(bool res);
 };

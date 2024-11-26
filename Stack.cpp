@@ -2,11 +2,6 @@
 
 Stack::Stack() : top{ EMPTY } {}
 
-Stack::Stack(const char* mas_P)
-{
-	
-}
-
 void Stack::Clear()
 {
 	top = EMPTY;
@@ -50,4 +45,68 @@ char Stack::Pop()
 	{
 		return 0;
 	}
+}
+
+bool Stack::Correct()
+{
+	for (char buff : mas)
+	{
+		switch (buff)
+		{
+		case '(':
+		{
+			Push(')');
+			break;
+		}
+		case '[':
+		{
+			Push(']');
+			break;
+		}
+		case '{':
+		{
+			Push('}');
+			break;
+		}
+
+		case ')':
+		{
+			if (IsEmpty() || mas[top] != buff)
+			{
+				return false;
+			}
+
+			Pop();
+			break;
+		}
+		case ']':
+		{
+			if (IsEmpty() || mas[top] != buff)
+			{
+				return false;
+			}
+
+			Pop();
+			break;
+		}
+		case '}':
+		{
+			if (IsEmpty() || mas[top] != buff)
+			{
+				return false;
+			}
+
+			Pop();
+			break;
+		}
+
+		}
+	}
+
+	return true;
+}
+
+void Stack::Print_Res(bool res)
+{
+	cout << (res == true ? "Расстановка скобок верна" : "Расстановка скобок неправильна.");
 }

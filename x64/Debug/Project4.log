@@ -1,5 +1,2 @@
-﻿  Source.cpp
-C:\Users\fartb\source\repos\Project4\Project4\Source.cpp(3,6): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-  Stack.cpp
-  Создание кода...
+﻿  Stack.cpp
   Project4.vcxproj -> C:\Users\fartb\source\repos\Project4\x64\Debug\Project4.exe
