@@ -32,7 +32,7 @@ void Stack::Push(char c)
 
 void Stack::Print()
 {
-	cout << mas;
+	cout << mas << endl;
 }
 
 char Stack::Pop()
@@ -47,66 +47,68 @@ char Stack::Pop()
 	}
 }
 
-bool Stack::Correct()
+string Stack::Correct()
 {
+	char* buff_mass = new char[FULL];
+	string mas_till_unc;
+	string correct = "correct";
+	int count = 0, count_for_unc = 0;
+
 	for (char buff : mas)
 	{
+		mas_till_unc.push_back(buff);
 		switch (buff)
 		{
 		case '(':
 		{
-			Push(')');
+			buff_mass[++count] = ')';
 			break;
 		}
 		case '[':
 		{
-			Push(']');
+			buff_mass[++count] = ']';
 			break;
 		}
 		case '{':
 		{
-			Push('}');
+			buff_mass[++count] = '}';
 			break;
 		}
 
 		case ')':
 		{
-			if (IsEmpty() || mas[top] != buff)
+			if (buff_mass[count] != buff)
 			{
-				return false;
+				cout << "\nРасстановка скобок неверна.\nМассив до первой ошибки: " << mas_till_unc;
+				return mas_till_unc;
 			}
 
-			Pop();
+			count--;
 			break;
 		}
 		case ']':
 		{
-			if (IsEmpty() || mas[top] != buff)
+			if (buff_mass[count] != buff)
 			{
-				return false;
+				return mas_till_unc;
 			}
 
-			Pop();
+			count--;
 			break;
 		}
 		case '}':
 		{
-			if (IsEmpty() || mas[top] != buff)
+			if (buff_mass[count] != buff)
 			{
-				return false;
+				return mas_till_unc;
 			}
 
-			Pop();
+			count--;
 			break;
 		}
 
 		}
 	}
 
-	return true;
-}
-
-void Stack::Print_Res(bool res)
-{
-	cout << (res == true ? "Расстановка скобок верна" : "Расстановка скобок неправильна.");
+	return correct;
 }

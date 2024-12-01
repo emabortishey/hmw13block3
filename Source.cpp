@@ -6,12 +6,47 @@ void main()
 
 	Stack obj1;
 
-	char mas_P[] = { "({x-y-z}*[x+2y]-(z+4x))" };
+	char mas_P1[24] = { "([x-y-z}*[x+2y)-{z+4x)]" };
 
-	for (int i = 0; i < 10; i++)
+	for(char elem : mas_P1)
 	{
-		obj1.Push(mas_P[i]);
+		obj1.Push(elem);
 	}
 
-	obj1.Print_Res(obj1.Correct());
+	if (obj1.Correct() == "correct")
+	{
+		cout << "\nРасстановка скобок верна.";
+	}
+	else
+	{
+		cout << "\nРасстановка скобок неверна.\nСтрока до первой ошибки: " << obj1.Correct();
+	}
+
+	cout << "\nСама строка: ";
+	obj1.Print();
+	
+	
+
+
+	Stack obj2;
+
+	char mas_P2[24] = { "({x-y-z}*[x+2y]-(z+4x))" };
+
+	for (char elem : mas_P2)
+	{
+		obj2.Push(elem);
+	}
+
+	if (obj2.Correct() == "correct")
+	{
+		cout << "\nРасстановка скобок верна.";
+	}
+	else
+	{
+		cout << "\nРасстановка скобок неверна.\nМассив до первой ошибки: " << obj2.Correct();
+	}
+
+	cout << "\nСама строка: ";
+	obj2.Print();
 }
+

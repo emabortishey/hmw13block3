@@ -4,7 +4,7 @@ using namespace std;
 
 class Stack
 {
-	enum { EMPTY = -1, FULL = 20 };
+	enum { EMPTY = -1, FULL = 40 };
 	int top;
 	char mas[FULL + 1];
 public:
@@ -16,6 +16,5 @@ public:
 	void Push(char c);
 	void Print();
 	char Pop();
-	bool Correct();
-	void Print_Res(bool res);
+	string Correct();
 };
